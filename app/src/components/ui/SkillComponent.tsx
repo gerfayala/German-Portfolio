@@ -9,7 +9,7 @@ interface SkillComponentProps {
 
 const SkillComponent = ({ imageSource, skillName }: SkillComponentProps) => {
   return (
-    <View className="flex-row justify-evenly items-center content-center bg-[#151E21] rounded-lg xs:w-4/5 xs:h-12 m-1" >
+    <View className="flex-row justify-evenly items-center content-center bg-[#151E21] rounded-lg xs:w-4/5 xs:h-12 m-1 shadow-lg" >
       <Image
         source={imageSource}
         className="ms:w-3 ms:h-3 xs:w-full xs:h-full"
