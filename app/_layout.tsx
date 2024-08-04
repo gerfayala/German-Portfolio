@@ -1,8 +1,8 @@
 import { Stack } from 'expo-router';
 import 'react-native-reanimated';
+import '../global.css';
 
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 
 export default function RootLayout() {
 

@@ -1,222 +1,113 @@
-import { View, Text, StyleSheet, ScrollView, Image, FlatList, Pressable } from 'react-native'
-import React from 'react'
-
-
-import { db,expo,fb,git,js,node,rn,ts, image,} from '../constants/Image'
-import SkillComponent from './src/components/ui/SkillComponent'
-import { Link } from 'expo-router'
-import ContactButton from './src/components/ui/Button'
-import { AntDesign, Fontisto } from '@expo/vector-icons'
+import React, { useRef } from 'react';
+import { View, Text, ScrollView, Image, Pressable } from 'react-native';
+import SkillComponent from './src/components/ui/SkillComponent';
+import { Link } from 'expo-router';
+import ContactButton from './src/components/ui/Button';
+import { AntDesign, Fontisto } from '@expo/vector-icons';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { db, expo, fb, git, js, node, rn, ts, image } from '../constants/Image';
 
 const index = () => {
-
   const skills = [
-  { name: 'React-Native', image: rn },
-  { name: 'Expo', image: expo },
-  { name: 'TypeScript', image: ts },
-  { name: 'Javascript', image: js},
-  { name: 'Node.js', image: node},
-  { name: 'SQL', image: db},
-  { name: 'NoSQL', image: db},
-  { name: 'Firebase', image: fb},
-  { name: 'Git',  image: git},
-];
+    { name: 'React-Native', image: rn },
+    { name: 'Expo', image: expo },
+    { name: 'TypeScript', image: ts },
+    { name: 'Javascript', image: js },
+    { name: 'Node.js', image: node },
+    { name: 'SQL', image: db },
+    { name: 'NoSQL', image: db },
+    { name: 'Firebase', image: fb },
+    { name: 'Git', image: git },
+  ];
 
- 
+  const contactButtonRef = useRef(null);
+
   return (
+    <ScrollView className="bg-[#151E21]">
+      <View className="flex-1 justify-center items-center xs:w-fit">
+        {/* Navbar */}
+        <View className="flex-row justify-center p-5">
+          <Text className="text-white text-lg font-bold xs:m-2 xs:text-xs">Experience</Text>
+          <Text className="text-white text-lg font-bold xs:m-2 xs:text-xs">Projects</Text>
+          <Text className="text-white text-lg font-bold xs:m-2 xs:text-xs">About Me</Text>
+          <Text className="text-white text-lg font-bold xs:m-2 xs:text-xs">Contact</Text>
+        </View>
 
-    <ScrollView  style = {{backgroundColor: '#151E21'}}>
-    <View style = {styles.container}>
-      {/* navbar */}
-
-      <View style ={ styles.navbarContainer} >
-        {/* TODO: CREATE TEXT COMPONENT WITH PRESSABLE */}
-        <Text style = {styles.navbarText}>Experience</Text>
-        <Text style = {styles.navbarText}> Projects</Text>
-        <Text style = {styles.navbarText}>About Me</Text>
-        <Text style = {styles.navbarText}> Contact</Text>
-      </View>
-
-      {/* Basic Information and programing Stack */}
-        <View style={styles.resumeContainer}>
-          
+        {/* Basic Information and Programming Stack */}
+        <View className="bg-[#0B1214] xl:w-11/12 lg:w-11/12 md:w-11/12 sm:w-11/12 justify-center  items-center  pb-5 shadow-lg">
           {/* Image and Resume Container */}
-
-          <View style = {styles.imageAndResumeContainer}>
-            <View style = {styles.imageContainer}>
-              <Image
-                source={image}
-                style = {styles.image}
-              />
-
+          <View className="xs:flex-col sm:mx-14">
+            <View className="xs:flex-row justify-start items-center  xs:mx-4 xs:mt-7 xs:mb-5">
+              <Image source={image} className="xs:w-5 xs:h-5 rounded-full border-4 border-[#00C8E0]" style={{ width: 80, height: 80 }} />
+              <Text className="text-white xs:text-xs font-bold border-2 rounded-full border-solid border-green-600  xs:ml-5 px-4 py-2">Open to Work</Text>
             </View>
-            <View style = {styles.informationContainer}>
-              <Text style = {styles.titleText}>Hey, I'm German Ayala!</Text>
-              <Text style = {styles.subTitleText}>Mobile Developer</Text>
-              <Text style={styles.paragraphText} numberOfLines={5} >
-               Experience in mobile application development using technologies such as Javascript/TypeScript, React-Native, Expo, EAS. I am an enthusiastic learner, always seeking new challenges to enhance my skills and knowledge. A committed developer with solid technical abilities,ready to take on new challenges and contribute to the success ofany project.
+            <View className="flex-1 flex-col mx-5">
+              <Text className="text-white xs:text-lg font-bold my-1">Hey, I'm German Ayala!</Text>
+              <Text className="text-[#7DDFEE] xs:text-base font-semibold">Mobile Developer</Text>
+              <Text className="text-white xs:text-md mt-1 mb-2 text-left font-medium" numberOfLines={10}>
+                Experience in mobile application development using technologies such as Javascript/TypeScript, React-Native, Expo, EAS. I am an enthusiastic learner, always seeking new challenges to enhance my skills and knowledge. A committed developer with solid technical abilities, ready to take on new challenges and contribute to the success of any project.
               </Text>
-
-              <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 20 }}>
-                
-                <Link href={'/'} asChild > 
+              
+              <View className="flex-row justify-center items-center gap-5  mt-4">
+                <Link href={'/'} asChild>
                   <ContactButton
-                  icon={<Fontisto name="email" size={24} color="white" />}  
+                    ref={contactButtonRef}
+                    icon={<Fontisto name="email" size={18} color="white" />}
                     buttonText="Contact"
-                  />          
+                  />
                 </Link>
-               <Link href={'/'} asChild > 
-                  <ContactButton 
-                    icon= {<AntDesign name="linkedin-square" size={24} color="white" />}
+                <Link href={'/'} asChild>
+                  <ContactButton
+                    ref={contactButtonRef}
+                    icon={<AntDesign name="linkedin-square" size={18} color="white" />}
                     buttonText="LinkedIn"
-                  />          
+                  />
                 </Link>
               </View>
             </View>
           </View>
 
-
           {/* Skill Container */}
-
-          <View  style={styles.programingSkillContainer}>
-            <Text style={{ color: 'white',fontSize: 16, fontWeight: 'bold', marginVertical: 10
-            }}> Programming Skills</Text>
-            <View
-              style={{ flexDirection: 'row', flexWrap: 'wrap',}}>
-              
-            
+           <View className="xs:w-full justify-around p-5 mx-14">
+            <Text className="text-white xl:text-lg lg:text-sm md:text-lg sm:text-xs font-bold my-2">Programming Skills</Text>
+            <View className="grid grid-cols-2 gap-4 w-full">
               {skills.map((skill, index) => (
-                <SkillComponent
-                  key={index}
-                  imageSource={skill.image}
-                  skillName={skill.name}
-                />
+                <SkillComponent key={index} imageSource={skill.image} skillName={skill.name} />
               ))}
-              
+            </View>
+          </View>
+        </View>
 
+        {/* Job Experience */}
+         {/* Portfolio */}
+        <View className=' flex-col justify-center content-center items-start mt-5 xs:w-full mx-14'>
+          <View className='flex-col mx-5'>
+            <View className='flex-row  justify-start pb-4  '>
+              <FontAwesome name="suitcase" size={24} color="#00C8E0" />
+              <Text className="text-white text-lg  font-bold  justify-self-center ml-4">Projects</Text>
+            </View>
+            
+            <View className='flex-col justify-evenly'>
+              <Image source={image} className="xs:w-5 xs:h-5 rounded-2xl" style={{ width: '100%' , height: '100%' }} />
+              <View className='grid gap-4 w-full mt-5 '>
+                <Text className='text-white text-lg font-bold '>Mobile Aplication -  DominoPoints</Text>
+                <Text className='text-white text-lg font-light text-left '>Aplicación móvil para Android y IOS que permite facilitar anotar puntos en el domino por parejas al estilo venezolano. Disponible en espańol e inglés. Juega partidas rápidas o torneos de 4 o 5 personas en un todos contra todos </Text>
             </View>
 
             </View>
 
-      </View>
+          </View>
 
-      {/* Job Experience */}
+         
+        </View>
 
+        {/* About Me */}
         <View>
-          
-          <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', marginVertical: 10 }}>Job Experience</Text>
-
+          {/* Aquí puedes añadir más contenido */}
+        </View>
       </View>
-
-
-      {/* About Me */}
-
-
-      <View>
-
-      </View>
-    </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  navbarContainer:{
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    padding: 20,
-  },
-  navbarText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-    margin: 20
-  },
-  resumeContainer: {
-    backgroundColor: '#0B1214',
-    width: '90%',
-    alignContent: 'center',
-    paddingBottom: 20,
-     shadowColor: "#000",
-        shadowOffset:{
-            width: 0,
-            height: 6,
-        },
-        shadowOpacity: 0.7,
-        shadowRadius: 5,
-        elevation: 6
-  },
-  imageAndResumeContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 20,
-    marginHorizontal: 60,
-    marginTop: 50,
-  },
-  imageContainer: {
-    flexDirection: 'row',
-    width: 'auto',
-    justifyContent: 'center',
-    marginTop: 30,
-  },
-  image: {
-    width: 120,
-    height: 120,
-    borderRadius: 70,
-    borderColor: '#00C8E0',
-    borderWidth: 6
-  },
-  informationContainer: {
-    flex: 1,    
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    marginHorizontal: 20
-  },
-  titleText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '900',
-    marginVertical: 2,
-  },
-  subTitleText: {
-    color: '#7DDFEE',
-    fontSize: 18,
-    fontWeight: 'semibold',
-  },
-  paragraphText: {
-    color: 'white',
-    fontSize: 14,
-    lineHeight: 25,
-    marginTop: 5,
-    flexWrap: 'wrap',
-    textAlign: 'justify',
-    fontWeight: '500',
-  },
-  button: {
-    flexDirection: 'row',
-    backgroundColor: '#1F2937',
-    borderRadius: 15,
-    width: '30%',
-    borderWidth: 3,
-    borderColor: '#4B5963',    
-    justifyContent: 'space-evenly',
-    alignContent: 'center',
-    marginVertical: 10,
-  },
-  programingSkillContainer: {
-    width: '100%',
-    justifyContent: 'space-around',
-    padding: 20,
-    marginHorizontal: 60,
-  },
- 
-
-})
-
-export default index
+export default index;

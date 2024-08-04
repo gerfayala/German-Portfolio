@@ -1,7 +1,6 @@
-
 import React from 'react';
-import { View, Image, Text, StyleSheet, ImageSourcePropType } from 'react-native';
-
+import { View, Image, Text } from 'react-native';
+import { ImageSourcePropType } from 'react-native';
 
 interface SkillComponentProps {
   imageSource: ImageSourcePropType;
@@ -10,38 +9,14 @@ interface SkillComponentProps {
 
 const SkillComponent = ({ imageSource, skillName }: SkillComponentProps) => {
   return (
-    <View style={styles.skillContainer}>
+    <View className="flex-row justify-evenly items-center content-center bg-[#151E21] rounded-lg xs:w-4/5 xs:h-12 m-1" >
       <Image
         source={imageSource}
-        style={styles.imageLogo}
+        className="ms:w-3 ms:h-3 xs:w-full xs:h-full"
       />
-      <Text style={styles.text}>{skillName}</Text>
+      <Text className="text-white xl:text-base  ms:text-xs xs:text-xs  font-semibold text-center" >{skillName}</Text>
     </View>
   );
 };
-
-
-const styles = StyleSheet.create({
-    skillContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        backgroundColor: '#151E21',
-        borderRadius: 8,
-        width: '20%',
-        paddingVertical: 10,
-        margin: 5,
-    },
-    imageLogo: {
-        width: 30,
-        height: 34,
-    },
-     text: {
-      color: 'white',
-      fontSize: 15,
-      fontWeight: 'semibold',
-      textAlign: 'center'
-  }
-});
 
 export default SkillComponent;
