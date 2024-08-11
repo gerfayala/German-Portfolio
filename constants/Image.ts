@@ -22,7 +22,7 @@ export const email = require('../assets/images/email.svg');
 
 export const linkedin = require('../assets/images/linkedin.svg');
 
-const domino = require('../assets/images/dominoPoints.svg');
+export const domino = require('../assets/images/dominoPoints.svg');
 
 
 module.exports = {
