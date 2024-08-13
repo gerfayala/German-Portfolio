@@ -7,6 +7,11 @@ import { AntDesign, Fontisto, } from '@expo/vector-icons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { db, expo, fb, git, js, node, rn, ts, image, domino } from '../constants/Image';
 import ProjectComponent from './src/components/ProjectComponent';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
 
 const index = () => {
   const skills = [
@@ -26,9 +31,9 @@ const index = () => {
 
   return (
     <ScrollView className="bg-[#151E21]">
-      <View className="flex justify-center items-center ">
+      <View className="flex  justify-center items-center ">
         {/* Navbar */}
-        <View className="sticky flex flex-row justify-between my-5 border rounded-full border-slate-600 ">
+        <View className="sticky flex   xl:w-7/12 flex-row justify-around my-5 border rounded-full border-slate-600 ">
           <Text className="text-white text-xs font-bold m-2 xs:text-xs">Experience</Text>
           <Text className="text-white text-xs font-bold m-2 xs:text-xs">Projects</Text>
           <Text className="text-white text-xs font-bold m-2 xs:text-xs">About Me</Text>
@@ -50,20 +55,16 @@ const index = () => {
 
               {/* contacts buttons  */}
               <View className="flex-row justify-center items-center gap-5  mt-4">
-                <Link href={'/'} asChild>
                   <ContactButton
                     ref={contactButtonRef}
                     icon={<Fontisto name="email" size={18} color="white" />}
                     buttonText="Contact me"
                   />
-                </Link>
-                <Link href={'/'} asChild>
                   <ContactButton
                     ref={contactButtonRef}
                     icon={<AntDesign name="linkedin-square" size={18} color="white" />}
                     buttonText="LinkedIn"
                   />
-                </Link>
 
               </View>
             </View>

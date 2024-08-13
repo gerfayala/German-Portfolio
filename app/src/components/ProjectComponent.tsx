@@ -4,6 +4,8 @@ import { Link, type Href } from 'expo-router';
 import ContactButton from './ui/Button';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
 
+
+
 interface DynamicComponentProps {
   imageSource: ImageSourcePropType;
   title: string;
